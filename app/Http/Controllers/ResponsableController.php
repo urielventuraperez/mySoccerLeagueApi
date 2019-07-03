@@ -15,4 +15,9 @@ class ResponsableController extends Controller
     public function store(Request $request){
         return Responsable::agregarResponsable($request);
     }
+
+    //Delete Responsable
+    public function delete($id){
+        return Responsable::eliminarResponsable($id);
+    }
 }

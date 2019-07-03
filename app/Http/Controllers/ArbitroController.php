@@ -16,4 +16,9 @@ class ArbitroController extends Controller
         return Arbitro::almacenarArbitro($request);
     }
 
+    //Eliminar un arbitro
+    public function delete($id){
+        return Arbitro::eliminarArbitro($id);
+    }
+
 }

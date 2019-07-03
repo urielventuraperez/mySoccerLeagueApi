@@ -17,6 +17,13 @@ class Jugador extends Model
     public static function agregarJugador(Request $request)
     {
         $jugador = new Jugador();
+
+       $request->validate([ 
+           'nombre'=>'required',
+           'apellido'=>'required',
+           'celular'=>'required' 
+           ]); 
+
         $jugador->nombre = $request->get('nombre');
         $jugador->apellido = $request->get('apellido');
         $jugador->alias = $request->get('alias');
@@ -25,4 +32,9 @@ class Jugador extends Model
         $jugador->timestamps = false;
         $jugador->save();
     }
+
+    public static function eliminarJugador($id){
+        return Jugador::where($id)->delete();
+    }
+
 }

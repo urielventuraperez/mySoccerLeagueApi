@@ -15,4 +15,9 @@ class JugadorController extends Controller
     public function store(Request $request){
         return Jugador::agregarJugador($request);
     }
+
+    public function delete($id){
+        return Jugador::eliminarJugador($id);
+    }
+
 }

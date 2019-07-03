@@ -3,19 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class Responsable extends Model
 {
     protected $table = "responsables";
 
-    public static function verTodosResponsables(){
+    public static function verTodosResponsables()
+    {
         return json_encode(Responsable::all());
     }
 
     //Agregar Responsable
-    public static function agregarResponsable($request){
+    public static function agregarResponsable($request)
+    {
         $responsable = new Responsable();
+
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'celular' => 'required',
+        ]);
+
         $responsable->nombre = $request->get('nombre');
         $responsable->apellido = $request->get('apellido');
         $responsable->alias = $request->get('alias');
@@ -25,4 +33,9 @@ class Responsable extends Model
         $responsable->es_equipo = !$request->get('es_torneo');
         $responsable->save();
     }
+
+    public static function eliminarResponsable($id){
+        return Responsable::where($id)->delete();
+    }
+
 }
