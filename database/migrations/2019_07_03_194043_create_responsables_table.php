@@ -15,6 +15,13 @@ class CreateResponsablesTable extends Migration
     {
         Schema::create('responsables', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre', 45);
+            $table->string('apellido', 45);
+            $table->string('alias', 35)->nullable();
+            $table->char('celular', 14);
+            $table->smallInteger('edad')->nullable();
+            $table->boolean('es_torneo')->nullable();
+            $table->boolean('es_equipo')->nullable();
             $table->timestamps();
         });
     }

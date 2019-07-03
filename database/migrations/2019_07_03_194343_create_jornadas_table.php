@@ -15,6 +15,11 @@ class CreateJornadasTable extends Migration
     {
         Schema::create('jornadas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->smallInteger('jornada');
+            $table->unsignedBigInteger('torneo_id');
+            $table->unsignedBigInteger('tipo_partido_id');
+            $table->foreign('torneo_id')->references('id')->on('torneos');
+            $table->foreign('tipo_partido_id')->references('id')->on('tipo_partidos');
             $table->timestamps();
         });
     }

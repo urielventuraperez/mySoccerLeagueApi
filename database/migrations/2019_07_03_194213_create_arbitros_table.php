@@ -15,7 +15,10 @@ class CreateArbitrosTable extends Migration
     {
         Schema::create('arbitros', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('nombre', 40);
+            $table->string('apellido', 40);
+            $table->string('alias', 20)->nullable();
+            $table->char('celular', 14);
         });
     }
 

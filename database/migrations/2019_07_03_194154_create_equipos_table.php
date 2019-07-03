@@ -15,6 +15,12 @@ class CreateEquiposTable extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre', 40);
+            $table->longText('descripcion');
+            $table->boolean('inscripcion')->nullable();
+            $table->float('inscripcion_abono', 0.0);
+            $table->unsignedBigInteger('torneo_id');
+            $table->foreign('torneo_id')->references('id')->on('torneos');
             $table->timestamps();
         });
     }

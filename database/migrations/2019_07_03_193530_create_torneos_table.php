@@ -15,6 +15,9 @@ class CreateTorneosTable extends Migration
     {
         Schema::create('torneos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre', 100);
+            $table->float('valor_inscripcion');
+            $table->float('valor_arbitraje');
             $table->timestamps();
         });
     }
