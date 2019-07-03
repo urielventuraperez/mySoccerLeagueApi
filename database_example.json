@@ -1,6 +1,6 @@
 {
 
-	"responsable":{
+	--"responsable":{
 		"id": autoincremental,
 		"nombre": string || not_null,
 		"apellido": string || not_null,
@@ -11,12 +11,12 @@
 		"celular": int || not_null,
 	},
 	
-	"categoria":{
+	--"categoria":{
 		"id": autoincremental,
 		"nombre": string,
 	},
 
-	"torneo":{
+	--"torneo":{
 		"id": autoincremental,
 		"nombre": string || not_null,
 		"total_equipos": smallInt || null,
@@ -40,7 +40,7 @@
 		"equipo_id": foreignKey,
 	},
 	
-	"jugador":{
+	--"jugador":{
 		"id": incremental,
 		"nombre": string || not_null,
 		"apellido": string || not_null,
@@ -49,7 +49,7 @@
 		"celular": int || null,
 	},
 	
-	"equipo":{
+	--"equipo":{
 		"id": autoincremental,
 		"nombre": string || not_null,
 		"descripcion": string || null,
@@ -58,7 +58,7 @@
 		"torneo_id": foreignKey,
 	},
 	
-	"arbitro":{
+	--"arbitro":{
 		"id": incremental,
 		"nombre": string || not_null,
 		"apellido": string || not_null,
@@ -66,7 +66,7 @@
 		"celular": int || not_null,
 	},
 	
-	"jornada":{
+	--"jornada":{
 		"id": incremental,
 		"jornada": smallInt || not_null,
 		"id_torneo": foreignKey,
@@ -96,7 +96,7 @@
 		"expulsion": bool,
 	}
 	
-	"tipo_partido":{ //Amistoso, Campeonato, Octavos, Cuartos, Semis, Final
+	--"tipo_partido":{ //Amistoso, Campeonato, Octavos, Cuartos, Semis, Final
 		"id": incremental,
 		"tipo": string,
 	}
