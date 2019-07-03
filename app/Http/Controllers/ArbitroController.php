@@ -7,6 +7,10 @@ use App\Models\Arbitro;
 
 class ArbitroController extends Controller
 {
+    public function all(){
+        return Arbitro::verTodosArbitros();
+    }
+
     //Almacena un arbitro
     function store(Request $request){
         return Arbitro::almacenarArbitro($request);

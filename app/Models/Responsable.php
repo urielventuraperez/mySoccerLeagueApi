@@ -9,6 +9,10 @@ class Responsable extends Model
 {
     protected $table = "responsables";
 
+    public static function verTodosResponsables(){
+        return json_encode(Responsable::all());
+    }
+
     //Agregar Responsable
     public static function agregarResponsable($request){
         $responsable = new Responsable();

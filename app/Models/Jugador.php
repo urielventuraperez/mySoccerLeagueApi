@@ -9,6 +9,10 @@ class Jugador extends Model
 {
     protected $table = "jugadores";
 
+    public static function verTodosJugadores(){
+        return json_encode(Jugador::all());
+    }
+
     /** Agregar Jugador **/
     public static function agregarJugador(Request $request)
     {

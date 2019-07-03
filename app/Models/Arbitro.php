@@ -11,6 +11,10 @@ class Arbitro extends Model
 
     protected $table = "arbitros";
 
+    public static function verTodosArbitros(){
+        return json_encode(Arbitro::all());
+    }
+
     public static function almacenarArbitro(Request $request){
         $arbitro = new Arbitro();
         $arbitro->nombre = $request->get('nombre');
