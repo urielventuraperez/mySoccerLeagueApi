@@ -1,0 +1,105 @@
+{
+
+	"responsable":{
+		"id": autoincremental,
+		"nombre": string,
+		"apellido": string,
+		"alias": string,
+		"torneo": boolean,
+		"equipo": boolean,
+		"edad": int,
+		"celular": int,
+	},
+	
+	"categoria":{
+		"id": autoincremental,
+		"nombre": string,
+	},
+
+	"torneo":{
+		"id": autoincremental,
+		"nombre": string,
+		"total_equipos": smallInt,
+		"fecha_inicio": date,
+		"fecha_fin": date,
+		"valor_inscripcion": float,
+		"id_categoria": foreignKey,
+		"id_responsable": foreignKey,
+	},
+	
+	"torneo_arbitro":{
+		"id": incremental,
+		"id_torneo": foreignKey,
+		"id_arbitro": foreignKey,
+	},
+	
+	"responsable_equipo":{
+		"id": incremental,
+		"responsable_id": foreignKey,
+		"equipo_id": foreignKey,
+	},
+	
+	"jugador":{
+		"id": incremental,
+		"nombre": string,
+		"apellido": string,
+		"alias": string,
+		"edad": int,
+		"celular": int,
+	},
+	
+	"equipo":{
+		"id": autoincremental,
+		"nombre": string,
+		"descripcion": string,
+		"victorias": smallInt,
+		"empates": smallInt,
+		"derrotas": smallInt,
+		"pagado": bool,
+		"deuda": float,
+		"puntos": smallInt,
+		"torneo_id": foreignKey,
+	},
+	
+	"arbitro":{
+		"id": incremental,
+		"nombre": string,
+		"apellido": string,
+		"alias": string,
+		"celular": int,
+	},
+	
+	"jornada":{
+		"id": incremental,
+		"jornada": smallInt,
+		"id_torneo": foreignKey,
+		"id_tipo_partido": foreignKey,
+	},
+	
+	"jornada_equipo":{
+		"id": incremental,
+		"id_jornada": foreignKey,
+		"id_equipo": foreignKey,
+		"empate": bool,
+		"derrota": bool,
+		"victoria": bool,
+		"faltas": smallInt,
+		"arbitraje": bool,
+		"deuda": smallInt,
+	},
+	
+	"jornada_jugador":{
+		"id": incremental,
+		"id_jornada": foreignKey,
+		"id_jugador": foreignKey,
+		"cantidad_gol": smallInt,
+		"cantidad_faltas": smallInt,
+		"amonestacion": bool,
+		"expulsion": bool,
+	}
+	
+	"tipo_partido":{ //Amistoso, Campeonato, Octavos, Cuartos, Semis, Final
+		"id": incremental,
+		"tipo": string,
+	}
+}
