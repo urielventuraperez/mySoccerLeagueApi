@@ -1,0 +1,133 @@
+{
+
+	"torneo":{
+		"id": 1,
+		"nombre": Liga de David,
+		"responsable": David Arturo,
+		"numero_equipos": 15,
+		"fecha_inicio": 03/07/2019,
+		"fecha_final": 03/11/2019,
+		"categoria": {
+			"nombre:": Veteranos
+		},
+		"valor_inscripcion": 150,
+	},
+
+	"equipo": {
+		"id": 1,
+		"nombre": Real Atletico,
+		"responsable": Coco,
+		"torneo": {
+			"nombre": Juvenil
+		},
+		"jugadores":{
+			1: Urielito,
+			2: Pepito,
+			3: Carlitos,
+			4: Romansito,
+			5: Benjito,
+			6: Bobsito,
+			7: Julito,
+			8: Mikesito,
+			9: Jorgito,
+			10: Robertito,
+			11: Huguito,
+			12: Chuchito,
+		},
+		"estadisticas":{
+			"victorias": 2,
+			"empates": 1,
+			"derrotas": 2
+			"goles_favor": 13,
+			"goles_contra": 14,
+		}
+		"inscripcion":{
+			"pagado": si,
+			"cantidad": 150
+		},
+		"arbitraje":{
+			"deuda": 100,
+			{
+				"jornada": 1,
+				"pago": si,
+				"cantidad": 120,
+			},
+			{
+				"jornada": 2,
+				"pago": si,
+				"cantidad": 120,
+			},
+			{
+				"jornada": 3,
+				"pago": no,
+				"cantidad": 20,
+			}
+		}
+	},
+	
+	"jugador":{
+		"id": 21,
+		"nombre": Benjamin Ventura,
+		"equipo":{
+			1: Real Atletico,
+			2: Atletico Mónaco
+		},
+		"goles": 10,
+		"faltas": 15,
+		"amonestaciones": 3,
+		"expulsiones": 0,
+		
+	},
+
+	"partidos":{
+		"torneo":{
+			"nombre": Liga de David,
+		},
+		"jornada": 1,
+		{
+			"partido":1,
+			"empate": No,
+			"local": Atletico Monaco,
+			"visita": Real Atletico,
+			"ganador": Atletico Monaco,
+			"amonestaciones":{
+				1: Benji
+			},
+			"expulsiones":{
+				
+			},
+		},
+		{
+			"partido": 2,
+			"empate": Si,
+			"local": Atletico de los Reales,
+			"visita": Real PSG,
+			"ganador": Atletico de los Reales,
+			"amonestaciones":{
+				1: Benji
+			},
+			"expulsiones":{
+				1: Chuchito
+			},
+		}
+	}
+
+	"estadisticas":{
+		"torneo":{
+			"nombre": Liga de David
+		},
+		"posiciones":{
+			1: Atletico Monaco,
+			2: Real Atletico,
+			3: Atletico de los reales,
+			4: Real PSG
+		},
+		"goleadores":{
+			1: Romario,
+			2: Rivaldo,
+			3: Jesusito,
+		},
+	}
+	
+
+}
