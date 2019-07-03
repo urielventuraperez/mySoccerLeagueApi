@@ -27,14 +27,12 @@
 		"id_responsable": foreignKey,
 	},
 	
-	"torneo_arbitro":{
-		"id": incremental,
+	----"torneo_arbitro":{
 		"id_torneo": foreignKey,
 		"id_arbitro": foreignKey,
 	},
 	
-	"responsable_equipo":{
-		"id": incremental,
+	----"responsable_equipo":{
 		"responsable_id": foreignKey,
 		"equipo_id": foreignKey,
 	},
@@ -72,8 +70,7 @@
 		"tipo_partido_id": foreignKey,
 	},
 	
-	"jornada_equipo":{
-		"id": incremental,
+	--"jornada_equipo":{
 		"id_jornada": foreignKey,
 		"id_equipo": foreignKey,
 		"empate": bool,
@@ -85,12 +82,12 @@
 		"deuda": smallInt,
 	},
 	
-	"jornada_jugador":{
-		"id": incremental,
+	--"jornada_jugador":{
 		"id_jornada": foreignKey,
 		"id_jugador": foreignKey,
 		"cantidad_gol": smallInt,
 		"cantidad_faltas": smallInt,
+		"cantidad_autogol": smallInt,
 		"amonestacion": bool,
 		"expulsion": bool,
 	}
