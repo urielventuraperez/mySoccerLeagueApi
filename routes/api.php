@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /** Torneos **/
+Route::get('verTorneos', 'TorneoController@viewAll')->name('verTorneos');
 Route::post('agregarTorneo', 'TorneoController@store')->name('agregarTorneo');
 Route::post('eliminarTorneo/{id}', 'TorneoController@delete')->name('eliminarTorneo');
 Route::post('actualizarTorneo/{id}', 'TorneoController@update')->name('actualizarTorneo');
@@ -31,6 +32,7 @@ Route::post('actualizarJornada/{id}', 'JornadaController@update')->name('actuali
 Route::post('agregarEquipo', 'EquipoController@store')->name('agregarEquipo');
 Route::post('eliminarEquipo/{id}', 'EquipoController@delete')->name('eliminarEquipo');
 Route::post('actualizarEquipo/{id}', 'EquipoController@update')->name('actualizarEquipo');
+Route::get('verEquipo/{id}', 'EquipoController@viewTeam')->name('verEquipo');
 
 /** Arbitros **/
 Route::get('arbitros/todos', 'ArbitroController@all')->name('todosArbitro');

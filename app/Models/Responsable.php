@@ -76,6 +76,6 @@ class Responsable extends Model
 
     public function torneo()
     {
-        return $this->belongsTo(Torneo::class);
+        return $this->hasOne(Torneo::class);
     }
 }

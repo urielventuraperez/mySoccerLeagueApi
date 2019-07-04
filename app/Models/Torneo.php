@@ -2,18 +2,39 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
-use App\Models\Responsable;
 use App\Models\Equipo;
 use App\Models\Jornada;
+use App\Models\Responsable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Torneo extends Model
 {
     protected $table = "torneos";
 
+    //Ver Torneos
+    public static function verTorneos()
+    {
+        $torneos = DB::table('responsables')
+            ->join('torneos', 'responsables.id', '=', 'torneos.responsable_id')
+            ->join('categorias', 'torneos.categoria_id', 'categorias.id')
+            ->select(
+                'torneos.id',
+                'torneos.nombre',
+                'torneos.valor_inscripcion',
+                'torneos.valor_arbitraje',
+                'responsables.nombre as responsable_nombre',
+                'responsables.apellido as responsable_apellido',
+                'categorias.nombre as categoria')
+            ->groupBy('torneos.id')
+            ->get();
+        return json_encode($torneos);
+    }
+
     //Agregar Torneo
-    public static function agregarTorneo($request){
+    public static function agregarTorneo($request)
+    {
         $torneo = new Torneo();
         $torneo->nombre = $request->get('nombre');
         $torneo->valor_inscripcion = $request->get('valor_inscripcion');
@@ -23,11 +44,13 @@ class Torneo extends Model
         $torneo->save();
     }
 
-    public static function eliminarTorneo($id){
+    public static function eliminarTorneo($id)
+    {
         return Torneo::destroy($id);
     }
 
-    public static function actualizarTorneo($request, $id){
+    public static function actualizarTorneo($request, $id)
+    {
         $torneo = Torneo::find($id);
         $torneo->nombre = $request->get('nombre');
         $torneo->valor_inscripcion = $request->get('valor_inscripcion');
@@ -38,8 +61,9 @@ class Torneo extends Model
     }
 
     //Relaciones
-    public function responsable(){
-        return $this->hasOne(Responsable::class);
+    public function responsable()
+    {
+        return $this->belongsTo(Responsable::class);
     }
 
     public function categoria()

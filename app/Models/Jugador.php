@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Equipo;
 
 class Jugador extends Model
 {
@@ -46,5 +47,10 @@ class Jugador extends Model
         $jugador->celular = $request->get('celular');
         $jugador->timestamps = false;
         $jugador->save();
+    }
+
+    public function equipo()
+    {
+        return $this->belongsToMany(Equipo::class, 'equipo_jugador');
     }
 }

@@ -9,6 +9,11 @@ use App\Modals\Responsable;
 
 class TorneoController extends Controller
 {
+    //Ver Torneo
+    public function viewAll(){
+        return Torneo::verTorneos();
+    }
+
     //Crear torneo
     public function store(Request $request){
         return Torneo::agregarTorneo($request);

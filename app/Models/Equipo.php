@@ -2,14 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Jugador;
 use App\Models\Torneo;
+use Illuminate\Database\Eloquent\Model;
 
 class Equipo extends Model
 {
     protected $table = "equipos";
 
-    public static function agregarEquipo($request){
+    public static function verEquipo($id)
+    {
+        return Equipo::find($id)->with('jugadores')->get();
+    }
+
+    public static function agregarEquipo($request)
+    {
         $equipo = new Equipo();
         $equipo->nombre = $request->get('nombre');
         $equipo->descripcion = $request->get('descripcion');
@@ -19,11 +26,13 @@ class Equipo extends Model
         $equipo->save();
     }
 
-    public static function eliminarEquipo($id){
+    public static function eliminarEquipo($id)
+    {
         return Equipo::destroy($id);
     }
 
-    public static function actualizarEquipo($request, $id){
+    public static function actualizarEquipo($request, $id)
+    {
         $equipo = Equipo::find($id);
         $equipo->nombre = $request->get('nombre');
         $equipo->descripcion = $request->get('descripcion');
@@ -37,5 +46,10 @@ class Equipo extends Model
     public function torneo()
     {
         return $this->hasOne(Torneo::class);
+    }
+
+    public function jugadores()
+    {
+        return $this->belongsToMany(Jugador::class, 'equipo_jugador');
     }
 }

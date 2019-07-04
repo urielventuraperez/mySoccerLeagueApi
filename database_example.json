@@ -26,7 +26,8 @@
 		"categoria_id": foreignKey,
 		"responsable_id": foreignKey,
 	},
-	/* Migracion: Por defecto 0 al valor inscripcion y arbitraje */
+	/* Migracion: Por defecto 0 al valor inscripcion y arbitraje.
+		Agregar tambien la fecha de inicio y final del torneo*/
 	
 	----"torneo_arbitro":{
 		"id_torneo": foreignKey,
