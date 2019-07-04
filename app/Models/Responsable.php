@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Torneo;
+
 class Responsable extends Model
 {
     protected $table = "responsables";
@@ -50,4 +52,10 @@ class Responsable extends Model
         $responsable->save();
     }
 
+    /** Relaciones **/
+
+    public function torneo()
+    {
+        return $this->belongsTo(Torneo::class);
+    }
 }

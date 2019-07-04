@@ -17,6 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/** Torneos **/
+Route::post('agregarTorneo', 'TorneoController@store')->name('agregarTorneo');
+
 /** Arbitros **/
 Route::get('arbitros/todos', 'ArbitroController@all')->name('todosArbitro');
 Route::post('agregarArbitro', 'ArbitroController@store')->name('agregarArbitro');

@@ -23,9 +23,10 @@
 		"fecha_fin": date || not_null,
 		"valor_inscripcion": float || not_null,
 		"valor_arbitraje": float || not_null,
-		"id_categoria": foreignKey,
-		"id_responsable": foreignKey,
+		"categoria_id": foreignKey,
+		"responsable_id": foreignKey,
 	},
+	/* Migracion: Por defecto 0 al valor inscripcion y arbitraje */
 	
 	----"torneo_arbitro":{
 		"id_torneo": foreignKey,
