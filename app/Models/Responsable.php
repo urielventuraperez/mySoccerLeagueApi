@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
 use App\Models\Torneo;
+use Illuminate\Database\Eloquent\Model;
 
 class Responsable extends Model
 {
@@ -20,27 +19,48 @@ class Responsable extends Model
     {
         $responsable = new Responsable();
 
+        try {
+
+            $request->validate([
+                "nombre"=>'required',
+                "apellido"=>'required',
+                "celular"=>'required'
+            ]);
+
+            $responsable->nombre = $request->get('nombre');
+            $responsable->apellido = $request->get('apellido');
+            $responsable->alias = $request->get('alias');
+            $responsable->celular = $request->get('celular');
+            $responsable->edad = $request->get('edad');
+            $responsable->es_torneo = $request->get('es_torneo');
+            $responsable->es_equipo = !$request->get('es_torneo');
+
+            if ( !$responsable->save() ){
+                return response()->json(["message" => "Error"]);
+            }
+
+            return response()->json(["message" => "Guardado"]);
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
+
+    public static function eliminarResponsable($id)
+    {
+        return Responsable::destroy($id);
+    }
+
+    public static function actualizarResponsable($request, $id)
+    {
+
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
             'celular' => 'required',
         ]);
 
-        $responsable->nombre = $request->get('nombre');
-        $responsable->apellido = $request->get('apellido');
-        $responsable->alias = $request->get('alias');
-        $responsable->celular = $request->get('celular');
-        $responsable->edad = $request->get('edad');
-        $responsable->es_torneo = $request->get('es_torneo');
-        $responsable->es_equipo = !$request->get('es_torneo');
-        $responsable->save();
-    }
-
-    public static function eliminarResponsable($id){
-        return Responsable::destroy($id);
-    }
-
-    public static function actualizarResponsable($request, $id){
         $responsable = Responsable::find($id);
         $responsable->nombre = $request->get('nombre');
         $responsable->apellido = $request->get('apellido');
