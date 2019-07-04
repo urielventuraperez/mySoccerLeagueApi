@@ -22,6 +22,16 @@ Route::post('agregarTorneo', 'TorneoController@store')->name('agregarTorneo');
 Route::post('eliminarTorneo/{id}', 'TorneoController@delete')->name('eliminarTorneo');
 Route::post('actualizarTorneo/{id}', 'TorneoController@update')->name('actualizarTorneo');
 
+/** Jornada **/
+Route::post('agregarJornada', 'JornadaController@store')->name('agregarJornada');
+Route::post('eliminarJornada/{id}', 'JornadaController@delete')->name('eliminarJornada');
+Route::post('actualizarJornada/{id}', 'JornadaController@update')->name('actualizarJornada');
+
+/** Equipos **/
+Route::post('agregarEquipo', 'EquipoController@store')->name('agregarEquipo');
+Route::post('eliminarEquipo/{id}', 'EquipoController@delete')->name('eliminarEquipo');
+Route::post('actualizarEquipo/{id}', 'EquipoController@update')->name('actualizarEquipo');
+
 /** Arbitros **/
 Route::get('arbitros/todos', 'ArbitroController@all')->name('todosArbitro');
 Route::post('agregarArbitro', 'ArbitroController@store')->name('agregarArbitro');

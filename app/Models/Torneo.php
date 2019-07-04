@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
 use App\Models\Responsable;
+use App\Models\Equipo;
 
 class Torneo extends Model
 {
@@ -43,5 +44,10 @@ class Torneo extends Model
     public function categoria()
     {
         return $this->hasOne(Categoria::class);
+    }
+
+    public function equipo()
+    {
+        return $this->belongsTo(Equipo::class);
     }
 }
