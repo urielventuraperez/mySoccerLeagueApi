@@ -47,6 +47,15 @@
 		"celular": int || null,
 	},
 	
+	"equipo_jugador":{
+		"equipo_id": incremental,
+		"jugador_id": incremental,
+		"gol": smallInt,
+		"falta": smallInt,
+		"amonestacion" smallInt,
+		"expulsion": smallInt,
+	},
+	
 	"equipo":{
 		"id": autoincremental,
 		"nombre": string || not_null,

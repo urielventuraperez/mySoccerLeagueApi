@@ -28,7 +28,7 @@ class CreateJornadaEquipoTable extends Migration
             $table->smallInteger('falta')->nullable();
             $table->smallInteger('penalizacion')->nullable();
             $table->boolean('arbitraje_completo')->nullable();
-            $table->float('arbitraje_pagado', 0)->nullable();
+            $table->float('arbitraje_pagado')->default(0);
             $table->timestamps();
         });
     }

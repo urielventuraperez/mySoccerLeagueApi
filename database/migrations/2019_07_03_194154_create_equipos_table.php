@@ -18,7 +18,7 @@ class CreateEquiposTable extends Migration
             $table->string('nombre', 40);
             $table->longText('descripcion');
             $table->boolean('inscripcion')->nullable();
-            $table->float('inscripcion_abono', 0.0);
+            $table->float('inscripcion_abono')->default(0.0);
             $table->unsignedBigInteger('torneo_id');
             $table->foreign('torneo_id')->references('id')->on('torneos');
             $table->timestamps();
