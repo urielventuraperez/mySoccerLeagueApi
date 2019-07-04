@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
 use App\Models\Responsable;
 use App\Models\Equipo;
+use App\Models\Jornada;
 
 class Torneo extends Model
 {
@@ -49,5 +50,10 @@ class Torneo extends Model
     public function equipo()
     {
         return $this->belongsTo(Equipo::class);
+    }
+
+    public function jornada()
+    {
+        return $this->belongsTo(Jornada::class);
     }
 }
