@@ -13,4 +13,14 @@ class TorneoController extends Controller
     public function store(Request $request){
         return Torneo::agregarTorneo($request);
     }
+
+    //Eliminar torneo
+    public function delete($id){
+        return Torneo::eliminarTorneo($id);
+    }
+
+    //Actualizar torneo
+    public function update(Request $request, $id){
+        return Torneo::actualizarTorneo($request, $id);
+    }
 }

@@ -21,6 +21,20 @@ class Torneo extends Model
         $torneo->save();
     }
 
+    public static function eliminarTorneo($id){
+        return Torneo::destroy($id);
+    }
+
+    public static function actualizarTorneo($request, $id){
+        $torneo = Torneo::find($id);
+        $torneo->nombre = $request->get('nombre');
+        $torneo->valor_inscripcion = $request->get('valor_inscripcion');
+        $torneo->valor_arbitraje = $request->get('valor_arbitraje');
+        $torneo->categoria_id = $request->get('categoria_id');
+        $torneo->responsable_id = $request->get('responsable_id');
+        $torneo->save();
+    }
+
     //Relaciones
     public function responsable(){
         return $this->hasOne(Responsable::class);
