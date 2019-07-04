@@ -49,6 +49,24 @@ class Jugador extends Model
         $jugador->save();
     }
 
+    /** Estadisticas por jugador **/
+    public static function golJugador($idJugador, $idEquipo){
+        return $jugador = Jugador::find($id);
+    }
+
+    public static function faltaJugador($id){
+        
+    }
+
+    public static function amonestacionJugador($id){
+        
+    }
+
+    public static function expulsionJugador($id){
+        
+    }
+
+    /** Relaciones entre modelos **/
     public function equipo()
     {
         return $this->belongsToMany(Equipo::class, 'equipo_jugador');

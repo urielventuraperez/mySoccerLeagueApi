@@ -24,4 +24,8 @@ class JugadorController extends Controller
         return Jugador::actualizarJugador($request, $id);
     }
 
+    public function gol($idJugador, $idEquipo){
+        return Jugador::golJugador($idJugador, $idEquipo);
+    }
+
 }
