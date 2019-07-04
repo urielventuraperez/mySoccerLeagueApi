@@ -20,14 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /** Arbitros **/
 Route::get('arbitros/todos', 'ArbitroController@all')->name('todosArbitro');
 Route::post('agregarArbitro', 'ArbitroController@store')->name('agregarArbitro');
-Route::post('eliminarArbitro', 'ArbitroController@delete')->name('eliminarArbitro');
+Route::post('eliminarArbitro/{id}', 'ArbitroController@delete')->name('eliminarArbitro');
 
 /** Jugadores **/
 Route::get('jugadores/todos', 'JugadorController@all')->name('todosJugador');
 Route::post('agregarJugador', 'JugadorController@store')->name('agregarJugador');
-Route::post('eliminarJugador', 'JugadorController@delete')->name('eliminarJugador');
+Route::post('eliminarJugador/{id}', 'JugadorController@delete')->name('eliminarJugador');
 
 /** Responsables **/
 Route::get('responsables/todos', 'ResponsableController@all')->name('todosResponsables');
 Route::post('agregarResponsable', 'ResponsableController@store')->name('agregarResponsable');
-Route::post('eliminarResponsable', 'ResponsableController@delete')->name('eliminarResponsable');
+Route::post('eliminarResponsable/{id}', 'ResponsableController@delete')->name('eliminarResponsable');

@@ -35,7 +35,7 @@ class Responsable extends Model
     }
 
     public static function eliminarResponsable($id){
-        return Responsable::where($id)->delete();
+        return Responsable::destroy($id);
     }
 
 }

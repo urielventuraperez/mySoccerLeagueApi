@@ -34,7 +34,7 @@ class Arbitro extends Model
     }
 
     public static function eliminarArbitro($id){
-        return Arbitro::where($id)->delete();
+        return Arbitro::destroy($id);
     }
 
 }

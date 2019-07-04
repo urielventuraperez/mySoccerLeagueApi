@@ -34,7 +34,7 @@ class Jugador extends Model
     }
 
     public static function eliminarJugador($id){
-        return Jugador::where($id)->delete();
+        return Jugador::destroy($id);
     }
 
 }
