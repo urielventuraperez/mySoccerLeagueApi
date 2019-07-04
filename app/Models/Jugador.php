@@ -14,7 +14,7 @@ class Jugador extends Model
     }
 
     /** Agregar Jugador **/
-    public static function agregarJugador(Request $request)
+    public static function agregarJugador($request)
     {
         $jugador = new Jugador();
 
@@ -37,4 +37,14 @@ class Jugador extends Model
         return Jugador::destroy($id);
     }
 
+    public static function actualizarJugador($request, $id){
+        $jugador = Jugador::find($id);
+        $jugador->nombre = $request->get('nombre');
+        $jugador->apellido = $request->get('apellido');
+        $jugador->alias = $request->get('alias');
+        $jugador->edad = $request->get('edad');
+        $jugador->celular = $request->get('celular');
+        $jugador->timestamps = false;
+        $jugador->save();
+    }
 }

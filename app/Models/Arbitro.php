@@ -37,4 +37,14 @@ class Arbitro extends Model
         return Arbitro::destroy($id);
     }
 
+    public static function actualizarArbitro($request, $id){
+        $arbitro = Arbitro::find($id);
+        $arbitro->nombre = $request->get('nombre');
+        $arbitro->apellido = $request->get('apellido');
+        $arbitro->alias = $request->get('alias');
+        $arbitro->celular = $request->get('celular');
+        $arbitro->timestamps = false;
+        $arbitro->save();
+    }
+
 }

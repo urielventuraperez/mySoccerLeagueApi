@@ -20,4 +20,9 @@ class ResponsableController extends Controller
     public function delete($id){
         return Responsable::eliminarResponsable($id);
     }
+
+    //Update Responsable
+    public function update(Request $request, $id){
+        return Responsable::actualizarResponsable($request, $id);
+    }
 }

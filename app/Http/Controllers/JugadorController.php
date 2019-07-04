@@ -20,4 +20,8 @@ class JugadorController extends Controller
         return Jugador::eliminarJugador($id);
     }
 
+    public function update(Request $request, $id){
+        return Jugador::actualizarJugador($request, $id);
+    }
+
 }
