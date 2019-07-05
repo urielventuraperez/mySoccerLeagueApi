@@ -46,10 +46,10 @@ Route::post('agregarJugador', 'JugadorController@store')->name('agregarJugador')
 Route::post('eliminarJugador/{id}', 'JugadorController@delete')->name('eliminarJugador');
 Route::post('actualizarJugador/{id}', 'JugadorController@update')->name('actualizarJugador');
 /** Estadisticas general de Jugador **/
-Route::get('jugador/{id}/equipo/{$equipo}/gol', 'JugadorController@gol')->name('jugadorGol');
-Route::get('jugador/{id}/falta', 'JugadorController@falta')->name('jugadorFalta');
-Route::get('jugador/{id}/amonestacion', 'JugadorController@amonestacion')->name('jugadorAmonestacion');
-Route::get('jugador/{id}/expulsion', 'JugadorController@expulsion')->name('jugadorExpulsion');
+Route::post('jugador/{idJugador}/equipo/{idEquipo}/gol', 'JugadorController@gol')->name('jugadorGol');
+Route::post('jugador/{idJugador}/equipo/{idEquipo}/falta', 'JugadorController@falta')->name('jugadorFalta');
+Route::post('jugador/{idJugador}/equipo/{idEquipo}/amonestacion', 'JugadorController@amonestacion')->name('jugadorAmonestacion');
+Route::post('jugador/{idJugador}/equipo/{idEquipo}/expulsion', 'JugadorController@expulsion')->name('jugadorExpulsion');
 
 /** Responsables **/
 Route::get('responsables/todos', 'ResponsableController@all')->name('todosResponsables');

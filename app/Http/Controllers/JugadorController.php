@@ -24,8 +24,21 @@ class JugadorController extends Controller
         return Jugador::actualizarJugador($request, $id);
     }
 
+    /** Estadisticas Jugador por Equipo **/
     public function gol($idJugador, $idEquipo){
         return Jugador::golJugador($idJugador, $idEquipo);
+    }
+
+    public function falta($idJugador, $idEquipo){
+        return Jugador::faltaJugador($idJugador, $idEquipo);
+    }
+
+    public function amonestacion($idJugador, $idEquipo){
+        return Jugador::amonestacionJugador($idJugador, $idEquipo);
+    }
+
+    public function expulsion($idJugador, $idEquipo){
+        return Jugador::expulsionJugador($idJugador, $idEquipo);
     }
 
 }
