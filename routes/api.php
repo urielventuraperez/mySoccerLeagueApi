@@ -29,6 +29,8 @@ Route::post('torneo/{id}/agregarArbitros', 'TorneoController@addReferee')->name(
 Route::post('agregarJornada', 'JornadaController@store')->name('agregarJornada');
 Route::post('eliminarJornada/{id}', 'JornadaController@delete')->name('eliminarJornada');
 Route::post('actualizarJornada/{id}', 'JornadaController@update')->name('actualizarJornada');
+/** Añadiendo equipos para las jornadas **/
+Route::post('jornada/{id}/equipo', 'JornadaController@addTeam')->name('equipoJornada');
 
 /** Equipos **/
 Route::post('agregarEquipo', 'EquipoController@store')->name('agregarEquipo');

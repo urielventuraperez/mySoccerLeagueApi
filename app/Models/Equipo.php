@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Jugador;
 use App\Models\Torneo;
+use App\Models\Jornada;
 use Illuminate\Database\Eloquent\Model;
 
 class Equipo extends Model
@@ -51,5 +52,10 @@ class Equipo extends Model
     public function jugadores()
     {
         return $this->belongsToMany(Jugador::class, 'equipo_jugador');
+    }
+
+    public function jornadas()
+    {
+        return $this->belongsToMany(Jornada::class, 'jornada_equipo');
     }
 }

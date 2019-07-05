@@ -19,4 +19,8 @@ class JornadaController extends Controller
     public function update(Request $request, $id){
         return Jornada::actualizarJornada($request, $id);
     }
+    //Equipos en Jornada
+    public function addTeam($idJornada){
+        return Jornada::agregarEquiposJornada($idJornada);
+    }
 }
