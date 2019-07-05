@@ -28,4 +28,8 @@ class TorneoController extends Controller
     public function update(Request $request, $id){
         return Torneo::actualizarTorneo($request, $id);
     }
+    /** Agregar Abitros al torneo **/
+    public function addReferee($idTorneo){
+        return Torneo::agregarArbitros($idTorneo);
+    }
 }

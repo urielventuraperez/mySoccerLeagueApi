@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Torneo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -47,4 +48,9 @@ class Arbitro extends Model
         $arbitro->save();
     }
 
+    /** Relaciones entre modelos **/
+    public function Torneos()
+    {
+        return $this->belongsToMany(Torneo::class, 'torneo_arbitro')->withTimestamps();
+    }
 }

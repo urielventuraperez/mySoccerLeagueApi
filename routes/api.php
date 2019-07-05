@@ -22,6 +22,8 @@ Route::get('verTorneos', 'TorneoController@viewAll')->name('verTorneos');
 Route::post('agregarTorneo', 'TorneoController@store')->name('agregarTorneo');
 Route::post('eliminarTorneo/{id}', 'TorneoController@delete')->name('eliminarTorneo');
 Route::post('actualizarTorneo/{id}', 'TorneoController@update')->name('actualizarTorneo');
+/** Arbitros Torneos **/
+Route::post('torneo/{id}/agregarArbitros', 'TorneoController@addReferee')->name('arbitroTorneo');
 
 /** Jornada **/
 Route::post('agregarJornada', 'JornadaController@store')->name('agregarJornada');
@@ -39,6 +41,8 @@ Route::get('arbitros/todos', 'ArbitroController@all')->name('todosArbitro');
 Route::post('agregarArbitro', 'ArbitroController@store')->name('agregarArbitro');
 Route::post('eliminarArbitro/{id}', 'ArbitroController@delete')->name('eliminarArbitro');
 Route::post('actualizarArbitro/{id}', 'ArbitroController@update')->name('actualizarArbitro');
+
+
 
 /** Jugadores **/
 Route::get('jugadores/todos', 'JugadorController@all')->name('todosJugador');

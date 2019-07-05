@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Arbitro;
 use App\Models\Categoria;
 use App\Models\Equipo;
 use App\Models\Jornada;
@@ -60,7 +61,18 @@ class Torneo extends Model
         $torneo->save();
     }
 
-    //Relaciones
+    public static function agregarArbitros($idTorneo)
+    {
+        $torneo = Torneo::find($idTorneo);
+        $arbitros = Arbitro::all('id');
+
+        foreach ($arbitros as $arbitro) {
+            $torneo->arbitros()->attach([$idTorneo => ['arbitro_id' => $arbitro->id]]);
+        }
+
+    }
+
+    //Relaciones entre modelos
     public function responsable()
     {
         return $this->belongsTo(Responsable::class);
@@ -80,4 +92,10 @@ class Torneo extends Model
     {
         return $this->belongsTo(Jornada::class);
     }
+
+    public function arbitros()
+    {
+        return $this->belongsToMany(Arbitro::class, 'torneo_arbitro')->withTimestamps();
+    }
+
 }
