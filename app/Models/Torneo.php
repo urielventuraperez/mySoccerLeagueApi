@@ -33,6 +33,20 @@ class Torneo extends Model
         return json_encode($torneos);
     }
 
+    public static function verEquiposTorneo($id){
+        $equiposTorneo = Equipo::where('torneo_id', $id)->get();
+        if($equiposTorneo->count()){
+            return $equiposTorneo;
+        }
+        else{
+            $returnData = array(
+                'status' => 'error',
+                'message' => 'Sin Equipos!'
+            );
+            return json_encode($returnData, 500);
+        }
+    }
+
     //Agregar Torneo
     public static function agregarTorneo($request)
     {

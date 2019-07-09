@@ -14,6 +14,10 @@ class TorneoController extends Controller
         return Torneo::verTorneos();
     }
 
+    public function viewTournamentTeams($id){
+        return Torneo::verEquiposTorneo($id);
+    }
+
     //Crear torneo
     public function store(Request $request){
         return Torneo::agregarTorneo($request);

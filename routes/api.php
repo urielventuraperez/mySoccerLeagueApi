@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 /** Torneos **/
 Route::get('verTorneos', 'TorneoController@viewAll')->name('verTorneos');
+Route::get('torneo/{id}/equipos', 'TorneoController@viewTournamentTeams');
 Route::post('agregarTorneo', 'TorneoController@store')->name('agregarTorneo');
 Route::post('eliminarTorneo/{id}', 'TorneoController@delete')->name('eliminarTorneo');
 Route::post('actualizarTorneo/{id}', 'TorneoController@update')->name('actualizarTorneo');
