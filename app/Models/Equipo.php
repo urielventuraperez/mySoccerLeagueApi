@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Jornada;
 use App\Models\Jugador;
 use App\Models\Torneo;
-use App\Models\Jornada;
 use Illuminate\Database\Eloquent\Model;
 
 class Equipo extends Model
@@ -13,7 +13,7 @@ class Equipo extends Model
 
     public static function verEquipo($id)
     {
-        return Equipo::find($id)->with('jugadores')->get();
+        return Equipo::where('id', $id)->with('jugadores')->get();
     }
 
     public static function agregarEquipo($request)
@@ -51,7 +51,8 @@ class Equipo extends Model
 
     public function jugadores()
     {
-        return $this->belongsToMany(Jugador::class, 'equipo_jugador');
+        return $this->belongsToMany(Jugador::class, 'equipo_jugador')
+            ->withPivot('gol', 'falta', 'amonestacion', 'expulsion');
     }
 
     public function jornadas()
