@@ -36,7 +36,7 @@ class Torneo extends Model
     public static function verEquiposTorneo($id){
         $equiposTorneo = Equipo::where('torneo_id', $id)->get();
         if($equiposTorneo->count()){
-            return $equiposTorneo;
+            return json_encode($equiposTorneo);
         }
         else{
             $returnData = array(
