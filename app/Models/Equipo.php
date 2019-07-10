@@ -13,7 +13,7 @@ class Equipo extends Model
 
     public static function verEquipo($id)
     {
-        return Equipo::where('id', $id)->with('jugadores')->get();
+        return json_encode(Equipo::where('id', $id)->with('jugadores')->get());
     }
 
     public static function agregarEquipo($request)
