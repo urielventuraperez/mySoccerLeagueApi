@@ -11,6 +11,10 @@ class ResponsableController extends Controller
         return Responsable::verTodosResponsables();
     }
 
+    public function tournament(){
+        return Responsable::verTorneoResponsables();
+    }
+
     //Store Responsable
     public function store(Request $request){
         return Responsable::agregarResponsable($request);

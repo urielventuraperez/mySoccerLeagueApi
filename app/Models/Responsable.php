@@ -14,6 +14,17 @@ class Responsable extends Model
         return json_encode(Responsable::all());
     }
 
+    public static function verTorneoResponsables(){
+        $responsables = Responsable::where('es_torneo', 1)->get();
+        if ($responsables->count()){
+            return $responsables;
+        } else{
+            return response()->json([
+                "error" => "Sin Responsables"
+            ]);
+        }
+    }
+
     //Agregar Responsable
     public static function agregarResponsable($request)
     {

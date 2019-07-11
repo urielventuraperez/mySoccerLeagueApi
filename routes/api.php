@@ -17,6 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/** Categorias **/
+Route::get('verCategorias', 'CategoriaController@viewAll')->name('verCategorias');
+
 /** Torneos **/
 Route::get('verTorneos', 'TorneoController@viewAll')->name('verTorneos');
 Route::get('torneo/{id}/equipos', 'TorneoController@viewTournamentTeams');
@@ -45,8 +48,6 @@ Route::post('agregarArbitro', 'ArbitroController@store')->name('agregarArbitro')
 Route::post('eliminarArbitro/{id}', 'ArbitroController@delete')->name('eliminarArbitro');
 Route::post('actualizarArbitro/{id}', 'ArbitroController@update')->name('actualizarArbitro');
 
-
-
 /** Jugadores **/
 Route::get('jugadores/todos', 'JugadorController@all')->name('todosJugador');
 Route::post('agregarJugador', 'JugadorController@store')->name('agregarJugador');
@@ -60,6 +61,7 @@ Route::post('jugador/{idJugador}/equipo/{idEquipo}/expulsion', 'JugadorControlle
 
 /** Responsables **/
 Route::get('responsables/todos', 'ResponsableController@all')->name('todosResponsables');
+Route::get('responsables/torneo', 'ResponsableController@tournament')->name('torneoResponsables');
 Route::post('agregarResponsable', 'ResponsableController@store')->name('agregarResponsable');
 Route::post('eliminarResponsable/{id}', 'ResponsableController@delete')->name('eliminarResponsable');
 Route::post('actualizarResponsable/{id}', 'ResponsableController@update')->name('actualizarResponsable');
