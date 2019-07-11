@@ -23,27 +23,32 @@ class Torneo extends Model
             ->select(
                 'torneos.id',
                 'torneos.nombre',
-                'torneos.valor_inscripcion',
-                'torneos.valor_arbitraje',
+                'torneos.costo_inscripcion',
+                'torneos.costo_arbitraje',
                 'responsables.nombre as responsable_nombre',
                 'responsables.apellido as responsable_apellido',
                 'categorias.nombre as categoria')
             ->groupBy('torneos.id')
             ->get();
-        return json_encode($torneos);
+        if ($torneos->count()) {
+            return json_encode($torneos);
+        } else {
+            return response()->json([
+                'error' => 'Sin Torneos',
+            ]);
+        }
+
     }
 
-    public static function verEquiposTorneo($id){
+    public static function verEquiposTorneo($id)
+    {
         $equiposTorneo = Equipo::where('torneo_id', $id)->get();
-        if($equiposTorneo->count()){
+        if ($equiposTorneo->count()) {
             return json_encode($equiposTorneo);
-        }
-        else{
-            $returnData = array(
-                'status' => 'error',
-                'message' => 'Sin Equipos!'
-            );
-            return json_encode($returnData, 500);
+        } else {
+            return response()->json([
+                'error' => 'Sin Equipos',
+            ]);
         }
     }
 
@@ -52,10 +57,12 @@ class Torneo extends Model
     {
         $torneo = new Torneo();
         $torneo->nombre = $request->get('nombre');
-        $torneo->valor_inscripcion = $request->get('valor_inscripcion');
-        $torneo->valor_arbitraje = $request->get('valor_arbitraje');
+        $torneo->costo_inscripcion = $request->get('costo_inscripcion');
+        $torneo->costo_arbitraje = $request->get('costo_arbitraje');
         $torneo->categoria_id = $request->get('categoria_id');
         $torneo->responsable_id = $request->get('responsable_id');
+        $torneo->inicio = $request->get('inicio');
+        $torneo->fin = $request->get('fin');
         $torneo->save();
     }
 
@@ -68,10 +75,12 @@ class Torneo extends Model
     {
         $torneo = Torneo::find($id);
         $torneo->nombre = $request->get('nombre');
-        $torneo->valor_inscripcion = $request->get('valor_inscripcion');
-        $torneo->valor_arbitraje = $request->get('valor_arbitraje');
+        $torneo->costo_inscripcion = $request->get('costo_inscripcion');
+        $torneo->costo_arbitraje = $request->get('costo_arbitraje');
         $torneo->categoria_id = $request->get('categoria_id');
         $torneo->responsable_id = $request->get('responsable_id');
+        $torneo->inicio = $request->get('inicio');
+        $torneo->fin = $request->get('fin');
         $torneo->save();
     }
 
