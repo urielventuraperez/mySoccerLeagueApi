@@ -101,10 +101,17 @@
 		"cantidad_autogol": smallInt,
 		"amonestacion": bool,
 		"expulsion": bool,
-	}
+	},
+	
+	--"partido":{
+		"id": incremental,
+		"jornada_id": foreignKey,
+		"torneo_id": foreignKey,
+		
+	},
 	
 	"tipo_partido":{ //Amistoso, Campeonato, Octavos, Cuartos, Semis, Final
 		"id": incremental,
 		"tipo": string,
-	}
+	},
 }
