@@ -13,8 +13,8 @@ class EquipoController extends Controller
     }
 
     //Añadir Equipo
-    public function store(Request $request){
-        return Equipo::agregarEquipo($request);
+    public function store(Request $request, $idTorneo){
+        return Equipo::agregarEquipo($request, $idTorneo);
     }
 
     //Eliminar Equipo

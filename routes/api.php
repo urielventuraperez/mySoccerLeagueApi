@@ -37,7 +37,7 @@ Route::post('actualizarJornada/{id}', 'JornadaController@update')->name('actuali
 Route::post('jornada/{id}/equipo', 'JornadaController@addTeam')->name('equipoJornada');
 
 /** Equipos **/
-Route::post('agregarEquipo', 'EquipoController@store')->name('agregarEquipo');
+Route::post('torneo/{id}/agregarEquipo', 'EquipoController@store')->name('agregarEquipo');
 Route::post('eliminarEquipo/{id}', 'EquipoController@delete')->name('eliminarEquipo');
 Route::post('actualizarEquipo/{id}', 'EquipoController@update')->name('actualizarEquipo');
 Route::get('verEquipo/{id}', 'EquipoController@viewTeam')->name('verEquipo');

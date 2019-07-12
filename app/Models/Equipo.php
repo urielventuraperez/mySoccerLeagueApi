@@ -16,15 +16,24 @@ class Equipo extends Model
         return json_encode(Equipo::where('id', $id)->with('jugadores')->get());
     }
 
-    public static function agregarEquipo($request)
+    public static function agregarEquipo($request, $idTorneo)
     {
         $equipo = new Equipo();
         $equipo->nombre = $request->get('nombre');
         $equipo->descripcion = $request->get('descripcion');
         $equipo->inscripcion = $request->get('inscripcion');
         $equipo->inscripcion_abono = $request->get('inscripcion_abono');
-        $equipo->torneo_id = $request->get('torneo_id');
-        $equipo->save();
+        $equipo->torneo_id = $idTorneo;
+        
+        if($equipo->save()){
+            return response()->json([
+                "message" => "Agregado con Exito"
+            ]);
+        }else{
+            return response()->json([
+                "message" => "Intentar de nuevo"
+            ]);
+        }
     }
 
     public static function eliminarEquipo($id)
