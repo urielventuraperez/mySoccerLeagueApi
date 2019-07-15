@@ -21,19 +21,37 @@ class Equipo extends Model
         $equipo = new Equipo();
         $equipo->nombre = $request->get('nombre');
         $equipo->descripcion = $request->get('descripcion');
-        $equipo->inscripcion = $request->get('inscripcion');
         $equipo->inscripcion_abono = $request->get('inscripcion_abono');
         $equipo->torneo_id = $idTorneo;
-        
-        if($equipo->save()){
+
+        /** Comparar el valor de la inscripcion del torneo **/
+        if ($request->get('inscripcion_abono') == self::obtenerInscripcion($idTorneo)
+            || $request->get('inscripcion_abono') >= self::obtenerInscripcion($idTorneo)) {
+            $equipo->inscripcion = true;
+        } else {
+            $equipo->inscripcion = false;
+        }
+
+        if ($equipo->save()) {
             return response()->json([
-                "message" => "Agregado con Exito"
+                "message" => "Agregado con Exito",
             ]);
-        }else{
+        } else {
             return response()->json([
-                "message" => "Intentar de nuevo"
+                "message" => "Intentar de nuevo",
             ]);
         }
+    }
+
+    /** Metodo privado para obtener el costo de la inscripcion **/
+    private static function obtenerInscripcion($idTorneo)
+    {
+        $torneo = Torneo::where('id', $idTorneo)->get();
+        foreach ($torneo as $costo_inscripcion) {
+            $costo = $costo_inscripcion->costo_inscripcion;
+        }
+
+        return $costo;
     }
 
     public static function eliminarEquipo($id)
