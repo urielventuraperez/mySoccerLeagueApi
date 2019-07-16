@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jornada extends Model
 {
     protected $table = "jornadas";
+    protected $fillable = ['id'];
 
     public static function agregarJornada($request)
     {
@@ -18,6 +19,19 @@ class Jornada extends Model
         $jornada->torneo_id = $request->get('tipo_partido_id');
         $jornada->tipo_partido_id = $request->get('tipo_partido_id');
         $jornada->save();
+    }
+
+    /** Generar Jornadas **/
+    public static function generarJornada(array $jornadas, $torneoId)
+    {
+        foreach ($jornadas as $u) {
+            if (!Jornada::where("jornada", $u)->where("torneo_id", $torneoId)->count()) {
+                $jornada = new Jornada();
+                $jornada->jornada = $u;
+                $jornada->torneo_id = $torneoId;
+                $jornada->save();
+            } 
+        }
     }
 
     public static function eliminarJornada($id)

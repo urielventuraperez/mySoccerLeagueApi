@@ -15,8 +15,8 @@ class CreatePartidosTable extends Migration
     {
         Schema::create('partidos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('equipo_visitante_id');
-            $table->unsignedBigInteger('equipo_local_id');
+            $table->unsignedBigInteger('equipo_visitante_id')->nullable();
+            $table->unsignedBigInteger('equipo_local_id')->nullable();
             $table->unsignedBigInteger('jornada_id');
             $table->unsignedBigInteger('tipo_partido_id');
             $table->foreign('equipo_visitante_id')->references('id')->on('equipos');

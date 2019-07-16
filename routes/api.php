@@ -65,3 +65,6 @@ Route::get('responsables/torneo', 'ResponsableController@tournament')->name('tor
 Route::post('agregarResponsable', 'ResponsableController@store')->name('agregarResponsable');
 Route::post('eliminarResponsable/{id}', 'ResponsableController@delete')->name('eliminarResponsable');
 Route::post('actualizarResponsable/{id}', 'ResponsableController@update')->name('actualizarResponsable');
+
+/** Partidos **/
+Route::post('partidos/{torneoId}/crearPartidos', 'PartidoController@createPlayRoles');

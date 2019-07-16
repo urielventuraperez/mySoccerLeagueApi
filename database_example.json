@@ -26,8 +26,8 @@
 		"categoria_id": foreignKey,
 		"responsable_id": foreignKey,
 	},
-	/* Migracion: Por defecto 0 al valor inscripcion y arbitraje.
-		Agregar tambien la fecha de inicio y final del torneo*/
+	/* Migracion: Agregar la cantidad de equipos al torneo */
+	/* Migracion: Agregar el status del torneo - En Curso: si o no*/
 	
 	----"torneo_arbitro":{
 		"id_torneo": foreignKey,
@@ -105,9 +105,9 @@
 	
 	--"partido":{
 		"id": incremental,
-		"jornada_id": foreignKey,
-		"torneo_id": foreignKey,
-		
+		"visitante": foreignKey,
+		"local": foreignKey,
+		"id_jornada": foreignKey,
 	},
 	
 	"tipo_partido":{ //Amistoso, Campeonato, Octavos, Cuartos, Semis, Final
