@@ -25,7 +25,9 @@
 		"valor_arbitraje": float || not_null,
 		"categoria_id": foreignKey,
 		"responsable_id": foreignKey,
+		"ubicacion": mapa
 	},
+	/* Migracion: Agregar la ubicacion del torneo */
 	/* Migracion: Agregar la cantidad de equipos al torneo */
 	/* Migracion: Agregar el status del torneo - En Curso: si o no*/
 	

@@ -62,6 +62,7 @@ Route::post('jugador/{idJugador}/equipo/{idEquipo}/expulsion', 'JugadorControlle
 /** Responsables **/
 Route::get('responsables/todos', 'ResponsableController@all')->name('todosResponsables');
 Route::get('responsables/torneo', 'ResponsableController@tournament')->name('torneoResponsables');
+Route::get('responsable/{id}/torneos', 'ResponsableController@tournamentLeader');
 Route::post('agregarResponsable', 'ResponsableController@store')->name('agregarResponsable');
 Route::post('eliminarResponsable/{id}', 'ResponsableController@delete')->name('eliminarResponsable');
 Route::post('actualizarResponsable/{id}', 'ResponsableController@update')->name('actualizarResponsable');

@@ -25,6 +25,20 @@ class Responsable extends Model
         }
     }
 
+    public static function verTorneos($idResponsable){
+        $torneo = Torneo::where('responsable_id', $idResponsable)->get();
+
+        if($torneo->count()){
+            return $torneo;
+        }
+        else{
+            return response()->json([
+                "error" => "error"
+            ]);
+        }
+
+    }
+
     //Agregar Responsable
     public static function agregarResponsable($request)
     {
