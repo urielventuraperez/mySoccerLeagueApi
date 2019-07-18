@@ -27,6 +27,7 @@
 		"responsable_id": foreignKey,
 		"ubicacion": mapa
 	},
+	/* Migracion: Agregar semaforo nivel de torneo, torneo esta en curso, en rondas finales, la final, por iniciar, amistosos */
 	/* Migracion: Agregar la ubicacion del torneo */
 	/* Migracion: Agregar la cantidad de equipos al torneo */
 	/* Migracion: Agregar el status del torneo - En Curso: si o no*/
