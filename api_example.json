@@ -12,6 +12,20 @@
 		},
 		"valor_inscripcion": 150,
 	},
+	
+	"arbitro":{
+		"id": 1,
+		"nombre": Jesusito,
+		"apellido": Chan,
+		"alias": Titinito,
+		"celular": 0120030040,
+		"torneos":{
+			{
+			},
+			{
+			}
+		} 
+	}
 
 	"equipo": {
 		"id": 1,
