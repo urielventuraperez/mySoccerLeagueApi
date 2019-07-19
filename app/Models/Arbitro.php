@@ -13,7 +13,7 @@ class Arbitro extends Model
 
     public static function verTodosArbitros()
     {
-        return json_encode(Arbitro::all());
+        return Arbitro::with('Torneos')->get();
     }
 
     public static function almacenarArbitro(Request $request)
@@ -34,11 +34,13 @@ class Arbitro extends Model
         $arbitro->save();
     }
 
-    public static function eliminarArbitro($id){
+    public static function eliminarArbitro($id)
+    {
         return Arbitro::destroy($id);
     }
 
-    public static function actualizarArbitro($request, $id){
+    public static function actualizarArbitro($request, $id)
+    {
         $arbitro = Arbitro::find($id);
         $arbitro->nombre = $request->get('nombre');
         $arbitro->apellido = $request->get('apellido');
@@ -51,6 +53,8 @@ class Arbitro extends Model
     /** Relaciones entre modelos **/
     public function Torneos()
     {
-        return $this->belongsToMany(Torneo::class, 'torneo_arbitro')->withTimestamps();
+        return $this->belongsToMany(Torneo::class, 'torneo_arbitro')
+            ->withPivot('torneo_id')
+            ->withTimestamps();
     }
 }

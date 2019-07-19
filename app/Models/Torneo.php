@@ -27,7 +27,8 @@ class Torneo extends Model
                 'torneos.costo_arbitraje',
                 'responsables.nombre as responsable_nombre',
                 'responsables.apellido as responsable_apellido',
-                'categorias.nombre as categoria')
+                'categorias.nombre as categoria',
+                )
             ->groupBy('torneos.id')
             ->get();
         if ($torneos->count()) {
@@ -118,7 +119,8 @@ class Torneo extends Model
 
     public function arbitros()
     {
-        return $this->belongsToMany(Arbitro::class, 'torneo_arbitro')->withTimestamps();
+        return $this->belongsToMany(Arbitro::class, 'torneo_arbitro')
+            ->withTimestamps();
     }
 
 }
