@@ -32,8 +32,14 @@ class TorneoController extends Controller
     public function update(Request $request, $id){
         return Torneo::actualizarTorneo($request, $id);
     }
+
+    /** Ver arbitros del torneo **/
+    public function viewTournamentReferees($tournamentId){
+        return Torneo::verArbitrosTorneo($tournamentId);
+    }
+
     /** Agregar Abitros al torneo **/
-    public function addReferee($idTorneo){
-        return Torneo::agregarArbitros($idTorneo);
+    public function addReferee($tournamentId){
+        return Torneo::agregarArbitros($tournamentId);
     }
 }

@@ -28,7 +28,7 @@ class Torneo extends Model
                 'responsables.nombre as responsable_nombre',
                 'responsables.apellido as responsable_apellido',
                 'categorias.nombre as categoria',
-                )
+            )
             ->groupBy('torneos.id')
             ->get();
         if ($torneos->count()) {
@@ -41,6 +41,7 @@ class Torneo extends Model
 
     }
 
+    /** Ver Equipos del torneo **/
     public static function verEquiposTorneo($id)
     {
         $equiposTorneo = Equipo::where('torneo_id', $id)->get();
@@ -49,6 +50,22 @@ class Torneo extends Model
         } else {
             return response()->json([
                 'error' => 'Sin Equipos',
+            ]);
+        }
+    }
+
+    /** Ver Arbitros del torneo **/
+    public static function verArbitrosTorneo($torneoId)
+    {
+        $arbitrosTorneo = Arbitro::whereHas('Torneos', function ($q) use($torneoId) {
+            $q->where('torneo_id', $torneoId);
+        })->get();
+        
+        if(count($arbitrosTorneo)){
+            return $arbitrosTorneo;
+        }else{
+            return response()->json([
+                "message" => "error"
             ]);
         }
     }
