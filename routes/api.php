@@ -13,12 +13,27 @@ use Illuminate\Http\Request;
 |
  */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/** 
+ * Usuarios
+ * **/
+
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'Auth\AuthController@login')->name('login');
+    Route::post('register', 'Auth\AuthController@register');
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::post('logout', 'Auth\AuthController@logout');
+        Route::get('user', 'Auth\AuthController@user');
+    });
 });
 
 /** Categorias **/
 Route::get('verCategorias', 'CategoriaController@viewAll')->name('verCategorias');
+
+//->middleware('auth:api') add to the route with special access
 
 /** Torneos **/
 Route::get('verTorneos', 'TorneoController@viewAll')->name('verTorneos');

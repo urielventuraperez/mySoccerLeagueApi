@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Responsable;
 use Illuminate\Http\Request;
 
 class ResponsableController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
         return Responsable::verTodosResponsables();
     }
