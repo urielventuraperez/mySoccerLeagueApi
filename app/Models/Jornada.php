@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Equipo;
 use App\Models\TipoPartido;
 use App\Models\Torneo;
+use App\Models\Partido;
 use Illuminate\Database\Eloquent\Model;
 
 class Jornada extends Model
@@ -58,6 +59,15 @@ class Jornada extends Model
         }
     }
 
+    public static function verTodasJornadas($idTorneo){
+        return Jornada::where('torneo_id', $idTorneo)->where('finalizado', 0)->with('partidos')->get();
+    }
+
+    public static function verJornadas($idTorneo,$idJornada)
+    {
+        return Jornada::where('id', $idJornada)->where('torneo_id', $idTorneo)->with('partidos')->get();
+    }
+    
     /** Relaciones entre modelos **/
     public function torneo()
     {
@@ -72,5 +82,9 @@ class Jornada extends Model
     public function equipos()
     {
         return $this->belongsToMany(Equipo::class, 'jornada_equipo');
+    }
+    public function partidos()
+    {
+        return $this->hasMany(Partido::class);
     }
 }

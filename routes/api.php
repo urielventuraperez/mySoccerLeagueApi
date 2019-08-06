@@ -51,6 +51,10 @@ Route::post('eliminarJornada/{id}', 'JornadaController@delete')->name('eliminarJ
 Route::post('actualizarJornada/{id}', 'JornadaController@update')->name('actualizarJornada');
 /** Añadiendo equipos para las jornadas **/
 Route::post('jornada/{id}/equipo', 'JornadaController@addTeam')->name('equipoJornada');
+/** Ver todas las jornadas del torneo **/
+Route::get('torneo/{idTorneo}/jornada/partido', 'JornadaController@viewAllMatches');
+/** Ver Jornada especifica **/
+Route::get('torneo/{idTorneo}/jornada/{idJornada}/partido', 'JornadaController@viewMatches');
 
 /** Equipos **/
 Route::post('torneo/{id}/agregarEquipo', 'EquipoController@store')->name('agregarEquipo');

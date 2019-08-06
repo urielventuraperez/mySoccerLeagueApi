@@ -97,4 +97,8 @@ class Partido extends Model
         return "done";
     }
 
+    public function jornada(){
+        return $this->belongsTo(Jornada::class);
+    }
+
 }
